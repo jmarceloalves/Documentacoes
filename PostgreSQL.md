@@ -23,53 +23,42 @@ sudo ufw allow 22/tcp # Habilita a porta 22 (SSH) no servidor
 ```bash
 ssh administrator@192.168.15.24
 ```
+## 4 - Começando a instalação do PostgreSQL
 
-## 4 - Instalar o webmim (https://webmin.com/download/)
-```bash
-curl -o webmin-setup-repo.sh https://raw.githubusercontent.com/webmin/webmin/master/webmin-setup-repo.sh
-sudo sh webmin-setup-repo.sh
-sudo apt-get install webmin --install-recommends
-sudo ufw allow 10000/tcp # Habilita a porta 10000 (Webmin) no servidor
-```
-
-**Observação:** A instância do Webmin ficará disponível no endereço http://192.168.15.24:10000
-
-## 5 - Começando a instalação do PostgreSQL
-
-### 5.1. Atualizar o Ubuntu
+### 4.1. Atualizar o Ubuntu
 
 ```bash
 sudo apt update
 sudo apt upgrade -y
 ```
 
-### 5.2. Adicione o repositório PGDG
+### 4.2. Adicione o repositório PGDG
 ```bash
 sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
 ```
 
-### 5.3. Importe as chaves de assinatura do repositório
+### 4.3. Importe as chaves de assinatura do repositório
 ```bash
 curl -fsSL https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/postgresql.gpg
 ```
 
-### 5.4. Atualize os índices de pacotes novamente
+### 4.4. Atualize os índices de pacotes novamente
 ```bash
 sudo apt update
 ```
 
-### 5.5. Instale o PostgreSQL versão 18
+### 4.5. Instale o PostgreSQL versão 18
 ```bash.
 sudo apt -y install postgresql-18
 ```
 
-### 5.6. Iniciar, ativar e verificar o status
+### 4.6. Iniciar, ativar e verificar o status
 ```bash
 sudo systemctl start postgresql # Iniciar o serviço
 sudo systemctl enable postgresql # Ativar o serviço
 sudo systemctl status postgresql # Verificar o status do serviço
 ```
-### 5.7. Proteger o banco de dados PostgreSQL no Ubuntu (máquina local)
+### 4.7. Proteger o banco de dados PostgreSQL no Ubuntu (máquina local)
 ```bash
 sudo -u postgres psql # Faça login como o usuário postgres
 ALTER USER postgres WITH ENCRYPTED PASSWORD 'strong_password'; # Altere a senha do usuário postgres
@@ -80,21 +69,21 @@ sudo sed -i '/^local/s/peer/scram-sha-256/' /etc/postgresql/18/main/pg_hba.conf 
 sudo systemctl restart postgresql # Reinicie o serviço do PostgreSQL para aplicar as alterações
 sudo ufw allow 5432 # Habilite a porta 5432 no firewall do servidor
 ```
-### 6 - TROUBLESHOOTING
+### 5. TROUBLESHOOTING
 
 **Observação:** Caso esteja utilizando o Virtual Box com placa de rede no modo Bridge e o servidor estiver indisponível, siga os passos abaixo
 
-### 6.1. Alterar o arquivo postgresql.conf localizado em /etc/postgresql/18/main/
+### 5.1. Alterar o arquivo postgresql.conf localizado em /etc/postgresql/18/main/
 ```bash
 sudo nano /etc/postgresql/18/main/postgresql.conf # Alterar de [listen_addresses = 'localhost'] para [listen_addresses = '*']
 ```
 
-### 6.2. Alterar o arquivo pg_hba.conf localizado em /etc/postgresql/18/main/
+### 5.2. Alterar o arquivo pg_hba.conf localizado em /etc/postgresql/18/main/
 ```bash
 sudo nano /etc/postgresql/18/main/pg_hba.conf
 ```
 
-### 6.3. Realizar as alterações abaixo no arquivo pg_hba.conf
+### 5.3. Realizar as alterações abaixo no arquivo pg_hba.conf
 ```bash
 # IPv4 local connections:
 host    all             all             0.0.0.0/0               scram-sha-256
@@ -102,7 +91,7 @@ host    all             all             0.0.0.0/0               scram-sha-256
 host    all             all             ::0/0                   scram-sha-256
 ```
 
-### 6.4. Reiniciar o serviço do PostgreSQL
+### 5.4. Reiniciar o serviço do PostgreSQL
 ```bash
 sudo systemctl restart postgresql
 ```
