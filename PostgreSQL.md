@@ -1,5 +1,7 @@
 # PostgreSQL
 
+**Observação:** Os itens 1 a 4 não são etapas obrigatórias para instalar o PostgreSQL. Eu utilizei estes passos pois estava usando o Oracle Virtual Machine na minha máquina pessoal. Caso você esteja instalando o PostgreSQL direto em um servidor, neste caso pode pular direto para o item 5.
+
 ## 1 - Atualizar o Ubuntu
 ```bash
 sudo apt update
