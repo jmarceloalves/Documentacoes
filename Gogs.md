@@ -94,6 +94,7 @@ sudo su -
 nano /home/git/gogs/custom/conf/app.ini
 ```
 4. Alterar o parâmetro INSTALL_LOCK = true para INSTALL_LOCK = false
+
 5. Reiniciar o serviço do Gogs
 ```bash
 sudo systemctl restart gogs

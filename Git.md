@@ -121,11 +121,11 @@ git checkout 237310b3258d11d6d24285926ca4e3a751ecf900
 
 ### 1. Iniciando por um repositório local
 
-O primeiro passo é criar um repositório local. Após esta ação, devemos criar um repositório remoto (no meu caso estou usando o Gogs localmente - ver documento Gogs.md). Neste exemplo criei um repositório chamado *rainbow_remote*. Após criar o repositório remoto será preciso copiar a URL para conexão SSH.
+O primeiro passo é criar um repositório local. Após esta ação, devemos criar um repositório remoto (no meu caso estou usando o Gogs localmente - ver documento Gogs.md). Neste exemplo criei um repositório chamado *rainbow_rm*. Após criar o repositório remoto será preciso copiar a URL para conexão SSH.
 
 O comando abaixo faz a conexão entre o repositório local inicializado e o repositório remoto criado.
 ```bash
-git remote add origin git@localhost:marcelo/rainbow_remote.git
+git remote add origin git@localhost:marcelo/rainbow_rm.git
 ```
 
 O comando abaixo lista todas as conexões remotas existentes para o repositório local:
@@ -146,4 +146,5 @@ git remote remove origin
 Para atualizar seu repositório remoto executamos o comando abaixo informando o nome da branch desejada:
 ```bash
 git push origin <nome_branch>
-``
+```
+
