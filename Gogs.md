@@ -60,7 +60,7 @@ Lembre-se de configurar o usuário administrador.
 
 Caso receba uma mensagem de erro do PostgreSQL, verifique se o usuário gogs é owner do banco de dados gogs.
 
-**Adicional:** Trabalhando com chaves SSH
+### Trabalhando com chaves SSH
 
 É extremamente recomendável gerar e instalar uma chave SSH na sua conta para realizar a conexão com o Gogs.
 
