@@ -1,17 +1,17 @@
 # Instalando e configurando o Gogs em um servidor Linux
 
-# Atualizando o Linux:
+## Atualizando o Linux:
 ```bash
 sudo apt update
 sudo apt upgrade -y
 ```
 
-# Instalando o Go
+## Instalando o Go
 ```bash
 sudo apt install golang-go
 ```
 
-# Configurando o PostgreSQL
+## Configurando o PostgreSQL
 ```bash
 sudo -u postgres psql
 postgres=# CREATE DATABASE gogs;
@@ -20,7 +20,7 @@ postgres=# GRANT ALL PRIVILEGES ON DATABASE gogs TO gogs;
 postgres=# \q
 ```
 
-# Instalando e configurando o Gogs
+## Instalando e configurando o Gogs
 ```bash
 # Baixe o Gogs a partir do repositório oficial
 curl -s https://api.github.com/repos/gogs/gogs/releases/latest | grep browser_download_url | grep '\linux_amd64.tar.gz' | cut -d '"' -f 4 | wget -i -
@@ -60,7 +60,7 @@ Lembre-se de configurar o usuário administrador.
 
 Caso receba uma mensagem de erro do PostgreSQL, verifique se o usuário gogs é owner do banco de dados gogs.
 
-### Trabalhando com chaves SSH
+## Trabalhando com chaves SSH
 
 É extremamente recomendável gerar e instalar uma chave SSH na sua conta para realizar a conexão com o Gogs.
 
@@ -75,7 +75,7 @@ cat ~/.ssh/nome_do_arquivo.pub
 
 Caso não tenha nenhuma chave SSH na sua máquina será necessário criar uma.
 
-# Troubleshooting
+## Troubleshooting
 
 No meu caso ocorreu um cenário onde desinstalei o PostgreSQL instalado localmente na minha máquina e instalei uma imagem do Docker com PostgreSQL. Com isso, perdi o banco de configuração do Gogs.
 
