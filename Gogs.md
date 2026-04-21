@@ -66,7 +66,7 @@ Caso receba uma mensagem de erro do PostgreSQL, verifique se o usuário gogs é 
 
 1. Verificando chaves SSH existentes:
 ```bash
-ssh-add -l
+ls -al ~/.ssh
 ```
 2. Abrindo o conteúdo da chave SSH:
 ```bash
@@ -74,3 +74,32 @@ cat ~/.ssh/nome_do_arquivo.pub
 ```
 
 Caso não tenha nenhuma chave SSH na sua máquina será necessário criar uma.
+
+# Troubleshooting
+
+No meu caso ocorreu um cenário onde desinstalei o PostgreSQL instalado localmente na minha máquina e instalei uma imagem do Docker com PostgreSQL. Com isso, perdi o banco de configuração do Gogs.
+
+Segui os passos abaixo para resolver:
+
+1. Primeiro foi preciso descobrir onde o arquivo de configuração do Gogs estava instalado:
+```bash
+sudo find / -name app.ini 2>/dev/null
+```
+2. Depois disso, tive que elevar mihas permissões de usuário para ROOT:
+```bash
+sudo su -
+```
+3. Depois foi necessário acessar o arquivo app.ini
+```bash
+nano /home/git/gogs/custom/conf/app.ini
+```
+4. Alterar o parâmetro INSTALL_LOCK = true para INSTALL_LOCK = false
+5. Reiniciar o serviço do Gogs
+```bash
+sudo systemctl restart gogs
+```
+
+Após este procedimento foi preciso reconfigurar o Gogs com o novo banco de dados. Todos os repositórios foram perdidos, pois eles não existem no novo banco. Mas a pasta com o conteúdo ainda existe na pasta do Gogs.
+
+É possível acessar estas pastas e fazer backup acessando o caminho da instalação do Gogs. No meu caso era: /home/git/gogs-repositories. Nesta pasta você irá encontrar as pastas com as organizações e as pastas com os nomes de usuário e seus respectivos repositórios.
+

@@ -64,7 +64,8 @@ git log
 
 ### 11. Listando todas as branchs existentes:
 ```bash
-git branch
+git branch # Lista todas as branchs locais
+git branch --all # Lista também as branchs remotas
 ```
 
 ### 12. Criando uma nova branch:
@@ -87,7 +88,7 @@ Existem dois tipos de merge:
 
 	1. merge fast-foward
 	2. merge three-way
-	
+
 **merge fast-foward:** Um merge fast-forward ocorre quando a branch que você quer integrar (ex: feature) contém todos os commits da branch de destino (ex: main), sem que a branch de destino tenha recebido novos commits nesse intervalo.
 
 **merge three-way:** O three-way merge (merge de três vias) ocorre quando as branches divergiram, ou seja, tanto a branch principal (main) quanto a branch em que você trabalhou (feature) receberam novos commits desde que se separaram.
@@ -120,7 +121,7 @@ git checkout 237310b3258d11d6d24285926ca4e3a751ecf900
 
 ### 1. Iniciando por um repositório local
 
-O primeiro passo é criar um repositório local. Neste exemplo criei um repositório chamado *rainbow_remote*. Após criar o repositório será preciso copiar a URL para conexão SSH.
+O primeiro passo é criar um repositório local. Após esta ação, devemos criar um repositório remoto (no meu caso estou usando o Gogs localmente - ver documento Gogs.md). Neste exemplo criei um repositório chamado *rainbow_remote*. Após criar o repositório remoto será preciso copiar a URL para conexão SSH.
 
 O comando abaixo faz a conexão entre o repositório local inicializado e o repositório remoto criado.
 ```bash
@@ -134,7 +135,15 @@ git remote
 
 O comando abaixo lista todas as conexões remotas existentes para o repositório local com o nome remoto e as URLs:
 ```bash
-git remote -vgit
+git remote -v
 ```
 
+Para excluir a ligação entre seu repositório git local com seu repositório remoto:
+```bash
+git remote remove origin
+```
 
+Para atualizar seu repositório remoto executamos o comando abaixo informando o nome da branch desejada:
+```bash
+git push origin <nome_branch>
+``
