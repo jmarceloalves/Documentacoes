@@ -73,7 +73,16 @@ ls -al ~/.ssh
 cat ~/.ssh/nome_do_arquivo.pub
 ```
 
-Caso não tenha nenhuma chave SSH na sua máquina será necessário criar uma.
+Caso não tenha nenhuma chave SSH na sua máquina será necessário criar uma. Lembre-se que seus arquivos precisam ser movidos para a pasta /home/usuario/.ssh
+
+```bash
+ssh-keygen -m PEM -N '' -f chave-crip # Cria o par de chaves
+ls # Exibe os arquivos criados. O arquivo .pub é a chave pública
+cat chave-crip # Exibe o conteúdo da chave privada
+cat chave-crip.pub # Exibe o conteúdo da chave pública. É esse conteúdo que deve ser compartilhado com o seu fornecedor
+sudo mv /pasta/origem/chave-crip /home/usuario/.ssh/
+sudo mv /pasta/origem/chave-crip.pub /home/usuario/.ssh/
+```
 
 ## Troubleshooting
 

@@ -80,6 +80,8 @@ git switch -c <nome_branch> # Cria a branch e muda para ela automaticamente
 
 git checkout <nome_branch>
 git checkout -b <nome_branch> # Cria a branch e muda para ela automaticamente
+
+git branch --all # Lista todas as branchs (local e remotasgi)
 ```
 
 ### 14. Fazendo merges no GIT:
@@ -147,4 +149,52 @@ Para atualizar seu repositório remoto executamos o comando abaixo informando o 
 ```bash
 git push origin <nome_branch>
 ```
+
+Listando todas as branchs (locais e remotas) de um repositório:
+```bash
+git branch --all
+```
+
+Fazendo o clone de um repositório remoto para a sua máquina local. O comando git clone realiza a cópia do repositório remoto e já realiza o link entre a pasta local e este repositório (origin):
+```bash
+git clone <url> <nome_pasta_local>
+```
+
+Para excluir a ligação da pasta com uma branch remota:
+```bash
+git push <nome_remoto> -d <nome_branch> # Geralmente o <nome_remoto> = origin
+```
+
+Para excluir uma branch local:
+```bash
+git branch -d <nome_branch>
+```
+
+### 2. Clonando repositórios remotos
+
+Clonagem de repositórios é o processo de clonar um repositório remoto de forma a criar um repositório local.
+```bash
+git clone <url> <nome_diretorio_local>
+```
+
+Após fazer o clone de um repositório remoto e alterações no repositório local (clonado), podemos fazer um git push para o repositório remoto.
+
+O fato de fazer um git push não significa que as branchs locais serão atualizados para uma nova posição. Para isso é preciso fazer um git fetch. O comando git fetch só afeta branches de rastreamento remoto:
+```bass
+git fetch <nome_remoto> # Geralmente o nome remoto é origin
+```
+
+Buscar alterações de um repositório remoto é um processo de dois passos:
+```bash
+git fetch <nome_remoto>
+git merge <nome_remoto/nome_brach>
+```
+
+Para atualizar seu repositório local, excluindo as branchs que foram excluídas do repositório remoto use:
+```bash
+git fetch -p
+```
+
+
+
 
