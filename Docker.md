@@ -157,9 +157,9 @@ docker exec -it <nome_container> sh # Para sair do container aperte CTRL+D
 docker run --name "nome_servidor" -d -p 8080:80 -e NGINX_ENTRYPOINT_QUIET_LOGS=1 -v "/home/marcelo/Downloads/unit6:/usr/share/nginx/html" nginx:1.19.4-alpine
 ```
 
-A primeira parte do comando ***docker run --name "nome_servidor" -d -p 8080:80*** inicializa uma imagem do docker e mapeia que a porta 8080 da máquina host será mapeado para a porta 80 do container.
+A primeira parte do comando **docker run --name "nome_servidor" -d -p 8080:80** inicializa uma imagem do docker e mapeia que a porta 8080 da máquina host será mapeado para a porta 80 do container.
 
-A segunda parte ***-v "/home/marcelo/Downloads/unit6:/usr/share/nginx/html"*** mapeia uma pasta local (/home/marcelo/Downloads/unit6) para a pasta /usr/share/nginx/html do container.
+A segunda parte **-v "/home/marcelo/Downloads/unit6:/usr/share/nginx/html"** mapeia uma pasta local (/home/marcelo/Downloads/unit6) para a pasta /usr/share/nginx/html do container.
 
 Para identificar quais os mapeamentos de diretórios existentes entre a máquina host e o container utilizamos o comando:
 ```bash
@@ -211,7 +211,7 @@ O comando **.** informa ao comando **docker build** aonde o arquivo **dockerfile
 docker run --name "servidor_web" -d -p 8080:80 jmarceloalves/servidor_web:v1
 ```
 
-No comando acima estamos criando um container chamado servidor_web, direcionando a porta 80 do container para a porta 8080 da nossa máquina e estamos informando o nome da imagem existente no nosso servidor. 
+No comando acima estamos criando um container chamado **servidor_web**, direcionando a porta 80 do container para a porta 8080 da nossa máquina e estamos informando o nome da imagem existente no nosso servidor. 
 
 
 
