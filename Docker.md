@@ -48,7 +48,7 @@
 	newgrp docker
 ```
 
-****Observações:***Por quê fizemos isso? Fizemos isso porque caso contrário só poderíamos executar o docker como superusuário, sudo ou root.Não queremos isso. Queremos que nosso usuário comum possa executar o Docker. Por isso adicionamos nosso usuário ao grupo docker. Quando o docker é executado, ele procura por um grupo com seu nome no sistema e dá permissão de uso aos usuários que fazem parte deste grupo. O segundo comando é 'uma gambiarra' que adiciona o nosso usuário a um grupo 'virtual' que demos o nome de docker para evitar que tenhamos que reiniciar o computador.
+**Observações:** Por quê fizemos isso? Fizemos isso porque caso contrário só poderíamos executar o docker como superusuário, sudo ou root.Não queremos isso. Queremos que nosso usuário comum possa executar o Docker. Por isso adicionamos nosso usuário ao grupo docker. Quando o docker é executado, ele procura por um grupo com seu nome no sistema e dá permissão de uso aos usuários que fazem parte deste grupo. O segundo comando é 'uma gambiarra' que adiciona o nosso usuário a um grupo 'virtual' que demos o nome de docker para evitar que tenhamos que reiniciar o computador.
 
 
 ### j) Testar a instalação executando o Hello World no terminal
@@ -170,13 +170,13 @@ As  informações podem ser validadas na seção "Mounts" da saída do comando
 
 ### Trabalhando com Dockerfiles
 
-Um ***Dockerfile*** nada mais é do que um documento de texto, no formato ***YAML***, com instruções que são utilizadas pelo ***Docker*** para gerar uma imagem baseada nas instruções do documento.
+Um **Dockerfile** nada mais é do que um documento de texto, no formato **YAML**, com instruções que são utilizadas pelo **Docker** para gerar uma imagem baseada nas instruções do documento.
 
 Essa imagem gerada a partir do nosso Dockerfile pode ser publicada no Docker Hub e compartilhada com outras pessoas.
 
 ### Criando um Dockerfile simples
 
-1. O primeiro passo é criar um arquivo chamado ***Dockerfile***. Este arquivo não precisa ter extensão, caso estejamos trabalhando com um único Dockerfile. No caso de mais de um arquivo devemos seguir o padrão funcao.dockerfile (Ex.: postgresql.dockerfile, nginx.dockerfile,...).
+1. O primeiro passo é criar um arquivo chamado **Dockerfile**. Este arquivo não precisa ter extensão, caso estejamos trabalhando com um único Dockerfile. No caso de mais de um arquivo devemos seguir o padrão funcao.dockerfile (Ex.: postgresql.dockerfile, nginx.dockerfile,...).
 
 Abaixo temos um exemplo de um arquivo Dockerfile simples escrito em YAML:
 ```bash
@@ -187,18 +187,24 @@ EXPOSE 80
 ```
 
 A primeira linha faz referência à imagem do docker hub.
+
 A segunda linha cria um label com o nome e contato do responsável por essa imagem.
+
 A terceira linha irá copiar todo o conteúdo do diretório onde o dockerfile está localizado para o diretório /usr/share/nginx/html na imagem.
+
 A quarta linha informa que a porta 80 da imagem deverá ser liberada.
+
 
 2. Após criarmos o arquivo, devemos "buildar" o mesmo. "Buildar" significa criar a imagem no nosso computador:
 ```bash
 docker build -f Dockerfile -t jmarceloalves/servidor_web:v1 .
 ```
 
-O comando ***-f Dockerfile*** aponta para o nome do arquivo (Dockerfile). Se o nome do arquivo fosse postgresql.dockerfile o comando seria ***-f postgresql.dockerfile***.
-O comando ***-t jmarceloalves/servidor_web:v1*** cria uma tag, informando o meu nome de usuário do docker hub, o nome como essa imagem será chamada (servidor_web) e a versão desta imagem (v1).
-O comando ***.*** informa ao comando ***docker build*** aonde o arquivo ***dockerfile*** está salvo. No nosso caso, ***.*** significa que o arquivo está no mesmo diretório onde estamos rodando nosso bash.
+O comando **-f Dockerfile** aponta para o nome do arquivo (Dockerfile). Se o nome do arquivo fosse postgresql.dockerfile o comando seria **-f postgresql.dockerfile**.
+
+O comando **-t jmarceloalves/servidor_web:v1** cria uma tag, informando o meu nome de usuário do docker hub, o nome como essa imagem será chamada (servidor_web) e a versão desta imagem (v1).
+
+O comando **.** informa ao comando **docker build** aonde o arquivo **dockerfile** está salvo. No nosso caso, **.** significa que o arquivo está no mesmo diretório onde estamos rodando nosso bash.
 
 3. Gerando a imagem
 ```bash
