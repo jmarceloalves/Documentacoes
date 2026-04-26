@@ -176,7 +176,7 @@ Essa imagem gerada a partir do nosso Dockerfile pode ser publicada no Docker Hub
 
 ### Criando um Dockerfile simples
 
-1. O primeiro passo é criar um arquivo chamado **Dockerfile**. Este arquivo não precisa ter extensão, caso estejamos trabalhando com um único Dockerfile. No caso de mais de um arquivo devemos seguir o padrão funcao.dockerfile (Ex.: postgresql.dockerfile, nginx.dockerfile,...).
+**1.** O primeiro passo é criar um arquivo chamado **Dockerfile**. Este arquivo não precisa ter extensão, caso estejamos trabalhando com um único Dockerfile. No caso de mais de um arquivo devemos seguir o padrão funcao.dockerfile (Ex.: postgresql.dockerfile, nginx.dockerfile,...).
 
 Abaixo temos um exemplo de um arquivo Dockerfile simples escrito em YAML:
 ```bash
@@ -195,7 +195,7 @@ A terceira linha irá copiar todo o conteúdo do diretório onde o dockerfile es
 A quarta linha informa que a porta 80 da imagem deverá ser liberada.
 
 
-2. Após criarmos o arquivo, devemos "buildar" o mesmo. "Buildar" significa criar a imagem no nosso computador:
+**2.** Após criarmos o arquivo, devemos "buildar" o mesmo. "Buildar" significa criar a imagem no nosso computador:
 ```bash
 docker build -f Dockerfile -t jmarceloalves/servidor_web:v1 .
 ```
@@ -206,7 +206,7 @@ O comando **-t jmarceloalves/servidor_web:v1** cria uma tag, informando o meu no
 
 O comando **.** informa ao comando **docker build** aonde o arquivo **dockerfile** está salvo. No nosso caso, **.** significa que o arquivo está no mesmo diretório onde estamos rodando nosso bash.
 
-3. Gerando a imagem
+**3.** Gerando a imagem
 ```bash
 docker run --name "servidor_web" -d -p 8080:80 jmarceloalves/servidor_web:v1
 ```
