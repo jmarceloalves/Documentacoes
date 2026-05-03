@@ -78,5 +78,16 @@ docker container stop nome_container
 
 ### Vendo logs de container
 ```bash
-docker container logs nome_container
+docker container logs nome_container # Mostra o log do container
+docker system info --format '{{.LoggingDriver}}' # Informa qual arquivo o Docker está utilizando para gerar o log
+sudo touch /etc/docker/daemon.json # Cria um arquivo json chamad daemon.json
+sudo nano /etc/docker/daemon.json  # Abre o arquivo para edição
 ```
+Deve ser preenchido no arquivo a informação abaixo:
+```json
+{
+"log-driver": "syslog"
+}
+```
+Quando o serviço do Docker for reiniciado o Docker passará a usar o padrão de logs do Linux.
+
